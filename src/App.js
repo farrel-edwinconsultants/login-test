@@ -8,7 +8,7 @@ import Home from './components/Home';
  
 import PrivateRoute from './utils/PrivateRoute';
 import PublicRoute from './utils/PublicRoute';
-import { getToken, removeUserSession, setUserSession } from './Utils/Common';
+import { getToken, removeUserSession, setUserSession } from './utils/Common';
  
 function App() {
   const [authLoading, setAuthLoading] = useState(true);
@@ -19,7 +19,7 @@ function App() {
       return;
     }
  
-    axios.get(`http://localhost:4000/verifyToken?token=${token}`).then(response => {
+    axios.get(`http://localhost:8000/api/verifyToken?token=${token}`).then(response => {
       setUserSession(response.data.token, response.data.user);
       setAuthLoading(false);
     }).catch(error => {
